@@ -5,8 +5,8 @@
 * http://localhost:3000/upload
 
 ### test in postman
-![postman](https://i.imgur.com/oYBwzzT.png)
+![postman](https://i.imgur.com/ytzq3wA.png)
 
 
 ### result
-![result](https://i.imgur.com/Y83nn34.png)
+![result](https://i.imgur.com/saUCEeN.png)
