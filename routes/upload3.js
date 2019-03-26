@@ -9,7 +9,9 @@ router.use(cors());
 router.use(express.static('static/uploads'));
 
 router.post('/', wrap(async function (req, res) {
-    var form = new formidable.IncomingForm();
+    var form = new formidable.IncomingForm(),
+        fileInfo = [],
+        fields = [];
     form.parse(req);
 
     form.on('fileBegin', function (name, file) {
@@ -27,9 +29,13 @@ router.post('/', wrap(async function (req, res) {
         //console.log(`${bytesReceived} / ${bytesExpected}`)
     });
 
-    form.on('file', function (name, file) {
-        console.log( req);
-        res.send({
+    form.on('field', function(field, value) {
+        fields.push([field, value]);
+    });
+
+    form.on('file', function (field, file) {
+        //console.log( req);
+        fileInfo.push({
             name: file.uploadedFile.name,
             extention: file.uploadedFile.ext,
             path: `${req.protocol}:\\\\${req.headers.host}${req.originalUrl}/${file.uploadedFile.name}${file.uploadedFile.ext}`
@@ -39,6 +45,7 @@ router.post('/', wrap(async function (req, res) {
 
     form.on('end', function () {
         console.log('All Uploaded!');
+        res.send(fileInfo);
     });
 
     form.on('error', function (err) {
@@ -48,40 +55,3 @@ router.post('/', wrap(async function (req, res) {
 }));
 
 module.exports = router;
-
-
-/*var express = require('express');
-var multer = require('multer');
-var path = require('path');
-var cors = require('cors');
-var wrap = require('express-async-wrap');
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(process.cwd(), '/static/uploads'));
-    },
-
-    filename: function (req, file, cb) {
-        var extention = path.extname(file.name).toLowerCase();
-        file.uploadedFile = {
-            name: `${Date.now()}_${path.basename(file.name, extention)}`,
-            ext: extention
-        };
-        cb(null, file.uploadedFile.name + file.uploadedFile.ext);
-    }
-});
-var uploader = multer({ storage: storage });
-var router = express.Router();
-
-router.use(cors());
-router.use(express.static('static/uploads'));
-
-router.post('/', uploader.single('file'), wrap(async function (req, res, next) {
-    res.send({
-        name: req.file.uploadedFile.name,
-        extention: req.file.uploadedFile.ext,
-        path: 'http://localhost:3000/upload/' + req.file.uploadedFile.name + req.file.uploadedFile.ext
-    });
-}));
-
-module.exports = router;*/
