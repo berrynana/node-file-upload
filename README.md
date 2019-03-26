@@ -1,7 +1,7 @@
 # node-file-upload
 
 npm install
-npm staart
+npm start
 http://localhost:3000/upload
 
 test in postman
