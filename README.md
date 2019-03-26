@@ -5,7 +5,8 @@ npm start
 http://localhost:3000/upload
 
 test in postman
-![test in postman](https://imgur.com/oYBwzzT)
+![postman](https://i.imgur.com/oYBwzzT.png)
+
 
 result
-![result](https://imgur.com/Y83nn34)
+![result](https://i.imgur.com/Y83nn34.png)
