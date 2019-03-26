@@ -1,7 +1,8 @@
 # node-file-upload
 
-* npm install
-* npm start
+* cmd
+* `npm install`
+* `npm start`
 * http://localhost:3000/upload
 
 ### test in postman
