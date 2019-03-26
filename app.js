@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var fs = require('fs');
 
 var indexRouter = require('./routes/index');
 //var uploadRouter = require('./routes/upload');
@@ -20,6 +21,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var dir = './static';
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+
+  dir = './static/uploads';
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+}
 
 app.use('/', indexRouter);
 app.use('/upload', uploadRouter);
