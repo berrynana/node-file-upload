@@ -1,5 +1,19 @@
 # node-file-upload
 
+## Purpose
+The upload server supported multiple files, async.
+using nodejs
+modules
+- express
+- formidable
+- fs
+- express-async-wrap
+- path
+- cors
+- morgan
+- http-errors
+- cookie-parser
+
 * cmd
 * `npm install`
 * `npm start`
