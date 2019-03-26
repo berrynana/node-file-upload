@@ -2,8 +2,8 @@
 
 ## Purpose
 The upload server supported multiple files, async.
-using nodejs
-modules
+### using nodejs
+#### modules
 - express
 - formidable
 - fs
@@ -14,10 +14,10 @@ modules
 - http-errors
 - cookie-parser
 
-* cmd
-* `npm install`
-* `npm start`
-* http://localhost:3000/upload
+### cmd
+1. `npm install`
+2. `npm start`
+3. http://localhost:3000/upload
 
 ### test in postman
 ![postman](https://i.imgur.com/ytzq3wA.png)
